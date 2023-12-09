@@ -11,8 +11,14 @@ export function HomePage() {
       <Welcome />
       {/* <ColorSchemeToggle /> */}
       <Flex dir={'row'} gap={16} w={'100%'} justify={'center'} align={'center'}>
-        <Button size={'lg'}>Register</Button>
-        <Button size={'lg'} variant={'white'} onClick={() => nav('/login')}>
+        <Button size={'lg'} onClick={() => nav('/auth', { state: { auth_type: 'register' } })}>
+          Register
+        </Button>
+        <Button
+          size={'lg'}
+          variant={'white'}
+          onClick={() => nav('/auth', { state: { auth_type: 'login' } })}
+        >
           Login
         </Button>
       </Flex>

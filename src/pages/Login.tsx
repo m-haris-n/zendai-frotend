@@ -16,9 +16,23 @@ import {
   Flex,
 } from '@mantine/core';
 import { GoogleButton } from '@/components/buttons/GoogleButton';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Login(props: PaperProps) {
-  const [type, toggle] = useToggle(['login', 'register']);
+  const nav = useNavigate();
+  const { state } = useLocation();
+  console.log(state);
+  const [type, setType] = useState(state != null ? state.auth_type : 'login');
+
+  const toggle = () => {
+    if (type === 'login') {
+      setType(() => 'register');
+    } else {
+      setType(() => 'login');
+    }
+  };
+
   const form = useForm({
     initialValues: {
       email: '',
@@ -97,7 +111,7 @@ export default function Login(props: PaperProps) {
                 ? 'Already have an account? Login'
                 : "Don't have an account? Register"}
             </Anchor>
-            <Button size={'lg'} type="submit" radius="xl">
+            <Button size={'lg'} type="submit" radius="xl" onClick={() => nav('/dashboard')}>
               {upperFirst(type)}
             </Button>
           </Group>
