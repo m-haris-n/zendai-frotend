@@ -1,4 +1,4 @@
-import { Anchor, Box, Button, Flex, Paper, ScrollArea, Text } from '@mantine/core';
+import { Anchor, Box, Button, Flex, NavLink, Paper, ScrollArea, Text } from '@mantine/core';
 import React from 'react';
 
 export default function ChatHistory() {
@@ -12,13 +12,7 @@ export default function ChatHistory() {
         align={'start'}
         gap={16}
       >
-        <Box
-          className={'hover:cursor-pointer bg-black bg-opacity-50 hover:bg-opacity-80 rounded-md'}
-          w={'100%'}
-          p={'sm'}
-        >
-          <Text size={'xl'}>This chat</Text>
-        </Box>
+        <NavLink label={'Name'} active={true} variant={'filled'} className={'rounded-md'} />
       </Flex>
     </ScrollArea>
   );

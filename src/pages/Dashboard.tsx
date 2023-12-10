@@ -9,6 +9,7 @@ import {
   Group,
   Image,
   Modal,
+  NavLink,
   Skeleton,
   Text,
   TextInput,
@@ -19,11 +20,20 @@ import ChatArea from '@/components/dashboard/ChatArea';
 import ChatHistory from '@/components/dashboard/ChatHistory';
 import { IconChevronDown, IconUser } from '@tabler/icons-react';
 import { IconChevronCompactDown } from '@tabler/icons-react';
+import { useAtom } from 'jotai';
 // import { MantineLogo } from '@mantinex/mantine-logo';
+import { credModalOpened } from '@/atoms';
 
 export default function Dashboard() {
   const [opened, { toggle }] = useDisclosure();
-  const [modalOpened, { open, close }] = useDisclosure(true);
+  // const [modalOpened, { open, close }] = useDisclosure(true);
+
+  const [modalOpened, setModalOpened] = useAtom(credModalOpened);
+
+  const close = () => {
+    setModalOpened(false);
+  };
+
   return (
     <>
       <Modal opened={modalOpened} withCloseButton={false} radius={'md'} onClose={close}>
@@ -57,7 +67,7 @@ export default function Dashboard() {
               <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
               <Text
                 variant="gradient"
-                size={'xl'}
+                size={'30px'}
                 lh={1}
                 fw={700}
                 gradient={{ from: 'purple', to: 'blue' }}
@@ -67,9 +77,7 @@ export default function Dashboard() {
             </Group>
             <Flex direction={'row'} gap={16} align={'center'}>
               <ColorSchemeToggleVariant />
-              <Button variant={'outline'} color={'#cfcfcf'}>
-                3 Queries left
-              </Button>
+              <Button variant={'outline'}>3 Queries left</Button>
               <Flex
                 direction={'row'}
                 justify={'start'}
@@ -77,7 +85,7 @@ export default function Dashboard() {
                 gap={8}
                 p={'xs'}
                 className={
-                  'hover:cursor-pointer bg-black bg-opacity-0 hover:bg-opacity-70 rounded-lg'
+                  'hover:cursor-pointer bg-black bg-opacity-0 hover:bg-opacity-20 transition-all rounded-lg'
                 }
               >
                 <Avatar src={null} size={'sm'} />

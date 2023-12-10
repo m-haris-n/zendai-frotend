@@ -50,7 +50,7 @@ export default function Login(props: PaperProps) {
   return (
     <Flex pt={80} justify={'center'}>
       <Paper radius="md" p="xl" maw={600} w={500} withBorder {...props}>
-        <Text lh={1} size={'30px'} fw={500}>
+        <Text lh={1} size={'28px'} fw={500}>
           Welcome to ZendAI, {type} with
         </Text>
 
