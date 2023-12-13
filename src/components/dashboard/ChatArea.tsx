@@ -108,6 +108,7 @@ export default function ChatArea() {
           autosize
         />
         <Button
+          type={'submit'}
           size={'lg'}
           onClick={() => handleSendMsg}
 
