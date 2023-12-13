@@ -109,7 +109,7 @@ export default function ChatArea() {
         />
         <Button
           size={'lg'}
-          onClick={handleSendMsg}
+          onClick={() => handleSendMsg}
 
           // disabled={!isZenned}
         >
