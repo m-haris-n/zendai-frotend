@@ -43,8 +43,7 @@ export default function ChatArea() {
     scrollToBottom();
   }, [history]);
 
-  const handleSendMsg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleSendMsg = () => {
     setHistory([...history, { role: 'user', message: inputMsg }]);
     setInputMsg('');
     sendMsg(inputMsg, history).then((res) => {
@@ -110,7 +109,10 @@ export default function ChatArea() {
         <Button
           type={'submit'}
           size={'lg'}
-          onClick={() => handleSendMsg}
+          onClick={(e) => {
+            e.preventDefault();
+            handleSendMsg();
+          }}
 
           // disabled={!isZenned}
         >
