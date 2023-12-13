@@ -1,9 +1,9 @@
 import { gpt_link } from './baseInstances';
 
-export const sendMsg = (msgBody: string, previous_history: Array<object>) => {
+export const sendMsg = (msgbody: string, previous_history: Array<object>) => {
   const reqBody = {
     providers: 'openai',
-    text: msgBody,
+    text: msgbody,
     chat_global_action: 'Follow user instructions',
     previous_history: previous_history,
     temperature: 0.0,
